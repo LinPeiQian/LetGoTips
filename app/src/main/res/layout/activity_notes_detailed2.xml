@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.chwings.letgotips.activity.guide.NotesDetailedActivity">
+
+    <com.brianLin.view.TitleBarView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        app:centerText="Brian"
+        app:leftBackPressed="true"
+        app:leftImage="@drawable/ic_map_return"
+        app:rightView="@layout/title_notes_detailed_right"
+        android:layout_alignParentTop="true"/>
+
+    <com.chwings.letgotips.view.FloatViewScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:fillViewport="true"
+        android:layout_below="@id/title"
+        android:nestedScrollingEnabled="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg"
+            android:orientation="vertical">
+
+            <com.chwings.letgotips.view.SameWidthHightRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/imViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/tv_total_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="8" />
+
+                <TextView
+                    android:id="@+id/tv_slash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tv_total_num"
+                    android:layout_toLeftOf="@id/tv_total_num"
+                    android:text="/" />
+
+                <TextView
+                    android:id="@+id/tv_index"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tv_slash"
+                    android:layout_toLeftOf="@id/tv_slash"
+                    android:text="3" />
+
+            </com.chwings.letgotips.view.SameWidthHightRelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/padding">
+
+                <TextView
+                    android:id="@+id/tv_introduce"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="自从去年夏天自从去年夏天自从去年夏天自从去年夏天自从去年夏天自从去年夏天自从去年夏天自从去年夏天自从去年夏天自从去年夏天自从去年夏天自从去年夏天自从去年夏天自从去年夏天" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_collection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="750次收藏" />
+
+                    <TextView
+                        android:id="@+id/tv_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@id/tv_collection"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toRightOf="@id/tv_collection"
+                        android:text="79次赞" />
+
+                    <TextView
+                        android:id="@+id/tv_distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@id/tv_collection"
+                        android:layout_alignParentRight="true"
+                        android:text="195KM" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@id/tv_collection"
+                        android:layout_marginRight="8dp"
+                        android:layout_toLeftOf="@id/tv_distance"
+                        android:drawableLeft="@drawable/ic_divider_list_checkbox_checked"
+                        android:text="海港城" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_native"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    >
+
+                    <RelativeLayout
+                        android:id="@+id/rl_indicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/bg">
+
+                        <android.support.design.widget.TabLayout
+                            android:id="@+id/tabLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="10dp"
+                            android:background="#D9D9D9"
+                            android:layout_centerInParent="true"/>
+
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/fmViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </com.chwings.letgotips.view.FloatViewScrollView>
+
+    <RelativeLayout
+        android:id="@+id/rl_backup"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        android:layout_below="@id/title"
+        android:background="@color/bg"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+    </RelativeLayout>
+
+</RelativeLayout>

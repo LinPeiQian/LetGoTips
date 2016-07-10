@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_all"
+    android:background="@color/black"
+    tools:context="com.chwings.letgotips.activity.guide.TravelDetailedActivity">
+
+    <com.brianLin.view.TitleBarView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@color/bg"
+        app:centerText="维多利亚港一日行"
+        app:leftBackPressed="true"
+        app:leftImage="@drawable/ic_divider_list_checkbox_checked"
+        app:rightImage="@drawable/ic_divider_list_checkbox_checked" />
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="@color/bg"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_detailed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/iv_cover"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/i33333333333" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:text="[穿越维多利亚]" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="巴拉巴拉巴拉巴拉巴拉巴巴拉拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_avater"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/i33333333333" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/iv_avater"
+                    android:text="name"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tv_name"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/tv_name"
+                    android:text="香港通" />
+
+                <TextView
+                    android:id="@+id/tv_focus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tv_nickname"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/bg_focus_travel_detailed"
+                    android:gravity="right"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="7dp"
+                    android:paddingTop="2dp"
+                    android:text="关注" />
+
+                <TextView
+                    android:id="@+id/tv_introduce"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/iv_avater"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@id/tv_name"
+                    android:layout_toRightOf="@id/iv_avater"
+                    android:gravity="bottom"
+                    android:text="书名书名书名书名书名书名书名书名书名书名书名书名" />
+            </RelativeLayout>
+
+            <com.brianLin.view.ListViewForScrollView
+                android:id="@+id/listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:divider="@null"
+                android:headerDividersEnabled="false" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

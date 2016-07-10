@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/title_height"
+     >
+
+    <FrameLayout
+        android:id="@+id/left_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        >
+        
+        <ImageButton
+            android:id="@+id/ib_image_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+			android:background="@android:color/transparent"
+			android:scaleType="center"
+			android:src="@drawable/ic_launcher"
+			android:visibility="gone"
+			android:minWidth="@dimen/title_btn_min_width"
+			android:layout_gravity="center_vertical"
+			android:layout_marginLeft="@dimen/title_leftRight_padding"
+            />
+        
+        <TextView
+            android:id="@+id/tv_text_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="text"
+            android:paddingLeft="@dimen/title_leftRight_padding"
+			android:paddingRight="@dimen/title_leftRight_padding"
+            android:visibility="gone"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+			android:gravity="center"
+            />
+        
+    </FrameLayout>
+    
+    <FrameLayout
+        android:id="@+id/middle_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        >
+        <TextView
+            android:id="@+id/tv_text_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="20sp" 
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+			android:visibility="gone"
+            />
+    </FrameLayout>
+    
+    <FrameLayout
+        android:id="@+id/right_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        >
+        
+        <ImageButton
+            android:id="@+id/ib_image_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:background="@android:color/transparent"
+			android:scaleType="center"
+			android:layout_marginRight="@dimen/title_leftRight_padding"
+			android:visibility="gone"
+			android:minWidth="@dimen/title_btn_min_width"
+			android:layout_gravity="center_vertical"
+            />
+
+		<TextView
+			android:id="@+id/tv_text_right"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:text="text"
+			android:paddingLeft="@dimen/title_leftRight_padding"
+			android:paddingRight="@dimen/title_leftRight_padding"
+			android:visibility="gone"
+			android:layout_gravity="center_vertical"
+			android:textColor="@color/white"
+			android:textSize="14sp"
+			android:gravity="center"
+			/>
+        
+    </FrameLayout>
+    
+    
+</RelativeLayout>
