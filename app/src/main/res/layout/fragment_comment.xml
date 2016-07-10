@@ -4,13 +4,9 @@
     android:layout_height="wrap_content"
     tools:context="com.chwings.letgotips.fragment.guide.CommentFragment">
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:text="评论"
-            android:gravity="center"
-            android:background="#E58174"/>
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_comment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>
