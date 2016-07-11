@@ -133,7 +133,7 @@ public class TitleBarView extends RelativeLayout implements View.OnClickListener
         mLeftText = typeArray.getString(R.styleable.TitleBarView_leftText);
         mLeftTextColor = typeArray.getColor(R.styleable.TitleBarView_leftTextColor , Color.WHITE);
         mLeftTextSize = typeArray.getDimension(R.styleable.TitleBarView_leftTextSize , 0);
-        mRightTextColor = typeArray.getColor(R.styleable.TitleBarView_rightTextColor , Color.WHITE);
+        mRightTextColor = typeArray.getColor(R.styleable.TitleBarView_rightTextColor , Color.BLACK);
         mRightTextSize = typeArray.getDimension(R.styleable.TitleBarView_rightTextSize , 0);
         mRightViewId = typeArray.getResourceId(R.styleable.TitleBarView_rightView, 0);
         mRightText = typeArray.getString(R.styleable.TitleBarView_rightText);
@@ -255,7 +255,7 @@ public class TitleBarView extends RelativeLayout implements View.OnClickListener
 
     /** 设置左边控件的监听  不包括自定义的View  */
     public TitleBarView setLeftOnclickListener(OnClickListener l){
-        if(ib_left != null && ib_right.getVisibility() == View.VISIBLE){
+        if(ib_left != null && ib_left.getVisibility() == View.VISIBLE){
             ib_left.setOnClickListener(l);
         }else if(tv_left != null && tv_left.getVisibility() == View.VISIBLE){
             tv_left.setOnClickListener(l);

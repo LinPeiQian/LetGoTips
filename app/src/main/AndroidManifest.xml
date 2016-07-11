@@ -12,23 +12,27 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".testCase.TestZhuJieActivity" />
         <activity android:name=".activity.BaseActivity" />
         <activity android:name=".testCase.TestHttpActivity" />
         <activity android:name=".activity.guide.HighQualityTravelActivity" />
         <activity android:name=".activity.guide.TravelDetailedActivity" />
-        <activity android:name=".activity.guide.InformationDetailedActivity"></activity>
-        <activity android:name=".activity.guide.NotesDetailedActivity">
+        <activity android:name=".activity.guide.InformationDetailedActivity" />
+        <activity android:name=".activity.guide.NotesDetailedActivity" />
+        <activity android:name=".testCase.TestNotesDetaildActivity" />
+        <activity
+            android:name=".activity.release.LocalImageGridAvtivty"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".testCase.TestNotesDetaildActivity">
-
-        </activity>
+        <activity android:name=".activity.release.LocalImageGesturesActivity" />
+        <activity android:name=".testCase.TestToolBarActivity"></activity>
+        <activity android:name=".activity.release.EditorImageActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.chwings.letgotips.fragment.guide;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -14,6 +15,7 @@ import android.widget.PopupWindow;
 
 import com.brianLin.view.TitleBarView;
 import com.chwings.letgotips.R;
+import com.chwings.letgotips.activity.release.LocalImageGridAvtivty;
 import com.chwings.letgotips.adapter.guide.guide.GuiTabPageIndicatorAdapter;
 import com.chwings.letgotips.fragment.BaseFragment;
 import com.chwings.letgotips.view.ViewPagerIndicator;
@@ -115,8 +117,9 @@ public class GuideFragment extends BaseFragment implements View.OnClickListener{
         switch (id){
             case R.id.rl_notes:
                 Log.d(TAG , "笔记");
-                break;
             case R.id.rl_information:
+                Intent intent = new Intent(getActivity() , LocalImageGridAvtivty.class);
+                startActivity(intent);
                 break;
         }
         mPopupWindow.dismiss();

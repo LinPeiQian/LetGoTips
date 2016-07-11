@@ -4,4 +4,20 @@
     <declare-styleable name="ViewPagerIndicator">
         <attr name="item_count" format="integer"/>
     </declare-styleable>
+
+    <declare-styleable name="CustomToolBar">
+        <attr name="centerTextColor2" format="color"></attr>
+        <attr name="centerTestSize2" format="dimension"></attr>
+        <attr name="centerText2" format="string"/>
+        <attr name="leftBackPressed2" format="boolean"/>
+        <attr name="leftImage2" format="reference"/>
+        <attr name="leftText2" format="string"></attr>
+        <attr name="leftTextColor2" format="color"></attr>
+        <attr name="leftTextSize2" format="dimension"></attr>
+        <attr name="rightText2" format="string"></attr>
+        <attr name="rightImage2" format="reference"></attr>
+        <attr name="rightTextColor2" format="color"></attr>
+        <attr name="rightTextSize2" format="dimension"></attr>
+    </declare-styleable>
+
 </resources>
