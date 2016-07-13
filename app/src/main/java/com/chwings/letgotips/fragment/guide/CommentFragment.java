@@ -1,15 +1,18 @@
 package com.chwings.letgotips.fragment.guide;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.chwings.letgotips.R;
+import com.chwings.letgotips.activity.guide.CommentActivity;
 import com.chwings.letgotips.fragment.BaseFragment;
 import com.chwings.letgotips.utils.GlideCircleTransform;
 import com.chwings.letgotips.view.FullyLinearLayoutManager;
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,5 +58,11 @@ public class CommentFragment extends BaseFragment {
             }
 
         });
+    }
+
+    @OnClick(R.id.tv_allComment)
+    public void onAllComment(View view){
+        Intent intent = new Intent(getActivity() , CommentActivity.class);
+        startActivity(intent);
     }
 }

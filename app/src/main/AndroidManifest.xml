@@ -12,7 +12,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".testCase.TestZhuJieActivity" />
         <activity android:name=".activity.BaseActivity" />
         <activity android:name=".testCase.TestHttpActivity" />
@@ -23,16 +29,14 @@
         <activity android:name=".testCase.TestNotesDetaildActivity" />
         <activity
             android:name=".activity.release.LocalImageGridAvtivty"
-            android:launchMode="singleInstance">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:launchMode="singleInstance" />
         <activity android:name=".activity.release.LocalImageGesturesActivity" />
-        <activity android:name=".testCase.TestToolBarActivity"></activity>
-        <activity android:name=".activity.release.EditorImageActivity"></activity>
+        <activity android:name=".testCase.TestToolBarActivity" />
+        <activity android:name=".activity.release.EditorImageActivity" />
+        <activity android:name=".activity.release.ReleaseNotesActivity" />
+        <activity android:name=".activity.release.SelectedImgActivity" />
+        <activity android:name=".activity.guide.CommentActivity"></activity>
+        <activity android:name=".activity.guide.QuestionActivity"></activity>
     </application>
 
 </manifest>

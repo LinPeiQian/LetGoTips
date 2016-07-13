@@ -76,7 +76,7 @@ public class LocalImageGesturesActivity extends BaseActivity implements ViewPage
 
     @OnClick(R.id.ll_finish)
     public void onFinish(View view){
-
+        startActivity(EditorImageActivity.class , LocalImageGesturesActivity.INTENT_SELECTED_TAG , (Serializable) mSelectedList);
     }
 
     @Override
@@ -123,6 +123,7 @@ public class LocalImageGesturesActivity extends BaseActivity implements ViewPage
                         mSelectedList.remove(mCurrentBean);
                     }
                 }
+                tv_selectNum.setText(mSelectedList.size() + "");
                 break;
         }
     }

@@ -6,4 +6,5 @@
 
     <color name="bg">#ffffff</color>
     <color name="blue">#10B8F7</color>
+    <color name="bg_editor_notes_info_dialog">#40000000</color>
 </resources>

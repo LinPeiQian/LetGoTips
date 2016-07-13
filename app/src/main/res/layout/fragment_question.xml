@@ -1,15 +1,21 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.chwings.letgotips.fragment.guide.QuestionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_question"
         android:layout_width="match_parent"
-        android:layout_height="3000dp"
-        android:text="问答"
-        android:gravity="center"
-        android:background="#4E8571"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_allQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="查看全部问答"
+        android:gravity="center"/>
+
+</LinearLayout>

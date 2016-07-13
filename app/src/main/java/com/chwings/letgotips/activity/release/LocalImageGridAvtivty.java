@@ -14,6 +14,7 @@ import com.chwings.letgotips.bean.LocalPicBean;
 import com.chwings.letgotips.bean.LocalPicFolderBean;
 import com.chwings.letgotips.helper.LocalPicHelper;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
@@ -45,6 +46,7 @@ public class LocalImageGridAvtivty extends BaseActivity implements LocalPicHelpe
         super.onCreate(savedInstanceState);
         initSearchLocalPic();
         rv_photo.setLayoutManager(new GridLayoutManager(this , 3));
+        title.setRightOnclickListener(this);
     }
 
     @Override
@@ -54,7 +56,6 @@ public class LocalImageGridAvtivty extends BaseActivity implements LocalPicHelpe
             List<LocalPicBean> list = (List<LocalPicBean>) data.getSerializableExtra(LocalImageGesturesActivity.INTENT_SELECTED_TAG);
             mGridAdapter.setSelectedList(list);
         }
-        title.setRightOnclickListener(this);
     }
 
     private void initSearchLocalPic(){
@@ -81,6 +82,6 @@ public class LocalImageGridAvtivty extends BaseActivity implements LocalPicHelpe
 
     @Override
     public void onClick(View v) {
-        
+        startActivity(EditorImageActivity.class , LocalImageGesturesActivity.INTENT_SELECTED_TAG , (Serializable) mGridAdapter.getSelectedList());
     }
 }

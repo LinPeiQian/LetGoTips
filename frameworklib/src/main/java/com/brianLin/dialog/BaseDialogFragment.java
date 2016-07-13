@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,9 @@ public abstract class BaseDialogFragment extends DialogFragment {
 	
 	private onDismissListener mListener ;
 	
-	private boolean mIsShowing = false; 
+	private boolean mIsShowing = false;
+
+	private boolean mFullScreen ;
 	
 	private boolean mIsLoadingDialog = false;
 
@@ -54,7 +57,22 @@ public abstract class BaseDialogFragment extends DialogFragment {
 		super.setCancelable(cancelable);
 		mIsCanDismiss = cancelable;
 	}
-	
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		if(mFullScreen){
+			DisplayMetrics dm = new DisplayMetrics();
+			getActivity().getWindowManager().getDefaultDisplay().getMetrics( dm );
+			getDialog().getWindow().setLayout( dm.widthPixels, dm.heightPixels );
+		}
+	}
+
+	/** 设置是否全屏 */
+	public void setFullScreen(boolean isFullScreen){
+		mFullScreen = isFullScreen ;
+	}
+
 	public void setLoadingDialog(){
 		mIsLoadingDialog = true;
 	}

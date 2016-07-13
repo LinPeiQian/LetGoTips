@@ -2,7 +2,6 @@ package com.chwings.letgotips.adapter.guide;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,9 +67,9 @@ public class DRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         DRecyclerViewHolder dRecyclerViewHolder;
-        Log.e(Tag, "当前type " + viewType);
+//        Log.e(Tag, "当前type " + viewType);
         if (viewType < mHeadViews.size()) {
-            Log.e(Tag, "headView" + viewType);
+//            Log.e(Tag, "headView" + viewType);
             return new DRecyclerViewHolder(mHeadViews.get(viewType));
 
         } else if (viewType >= mHeadViews.size() && viewType < mHeadViews.size() + mInnerAdapter.getItemCount()) {
@@ -81,7 +80,7 @@ public class DRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
             }
             return mInnerAdapter.onCreateViewHolder(parent, viewType - mHeadViews.size());
         } else {
-            Log.e(Tag, "FootView" + viewType);
+//            Log.e(Tag, "FootView" + viewType);
             int position = viewType - mHeadViews.size() - mInnerAdapter.getItemCount();
             if (position >= 0 && position < mFootViews.size()) {
                 return new DRecyclerViewHolder(mFootViews.get(position));
@@ -137,7 +136,7 @@ public class DRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public boolean isRandom(int position){
-        Log.e("isRandom",position+"  "+mRandomViews_position.get(position-mHeadViews.size()));
+//        Log.e("isRandom",position+"  "+mRandomViews_position.get(position-mHeadViews.size()));
         return mRandomViews_position.get(position-mHeadViews.size())!=null?true:false;
     }
 

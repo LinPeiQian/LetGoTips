@@ -1,20 +1,21 @@
 package com.chwings.letgotips.fragment.guide;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.chwings.letgotips.R;
+import com.chwings.letgotips.activity.guide.NotesDetailedActivity;
+import com.chwings.letgotips.adapter.guide.guide.GuideFunAdapter;
 import com.chwings.letgotips.fragment.BaseFragment;
 import com.chwings.letgotips.itemDecoration.SpaceItemDecoration;
 import com.chwings.letgotips.testCase.bean.TestGuideFunBean;
-import com.zhy.base.adapter.ViewHolder;
-import com.zhy.base.adapter.recyclerview.CommonAdapter;
+import com.zhy.base.adapter.recyclerview.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +25,14 @@ import butterknife.BindView;
 /**
  * 指南中的 吃
  */
-public class EatFragment extends BaseFragment {
+public class EatFragment extends BaseFragment implements OnItemClickListener<TestGuideFunBean>{
 
     @BindView(R.id.rv_fun)
     RecyclerView rv_fun;
 
     private List<TestGuideFunBean> mData ;
+
+    private GuideFunAdapter mAdapter ;
 
     @Override
     public int getLayoutId() {
@@ -43,13 +46,9 @@ public class EatFragment extends BaseFragment {
         rv_fun.setLayoutManager(new StaggeredGridLayoutManager(2 , LinearLayout.VERTICAL));
         int decoration = getResources().getDimensionPixelSize(R.dimen.padding);
         rv_fun.addItemDecoration(new SpaceItemDecoration(decoration , 0 , decoration , 0 , true));
-        rv_fun.setAdapter(new CommonAdapter<TestGuideFunBean>(getActivity() , R.layout.item_guide_note, mData) {
-            @Override
-            public void convert(ViewHolder holder, TestGuideFunBean testGuideFunBean, int position) {
-                Glide.with(getActivity()).load(testGuideFunBean.resId).into((ImageView)holder.getView(R.id.iv_fun));
-                ((TextView)holder.getView(R.id.tv_instructions)).setText(testGuideFunBean.instructions);
-            }
-        });
+        mAdapter = new GuideFunAdapter(getActivity() , mData);
+        mAdapter.setOnItemClickListener(this);
+        rv_fun.setAdapter(mAdapter);
     }
 
     private void initData(){
@@ -61,5 +60,14 @@ public class EatFragment extends BaseFragment {
     }
 
 
+    @Override
+    public void onItemClick(ViewGroup parent, View view, TestGuideFunBean testGuideFunBean, int position) {
+        Intent intent = new Intent(getActivity() , NotesDetailedActivity.class);
+        startActivity(intent);
+    }
 
+    @Override
+    public boolean onItemLongClick(ViewGroup parent, View view, TestGuideFunBean testGuideFunBean, int position) {
+        return false;
+    }
 }

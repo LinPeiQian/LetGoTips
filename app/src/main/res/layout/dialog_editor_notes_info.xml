@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_editor_notes_info_dialog"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="70dp"
+    android:paddingRight="70dp"
+    android:id="@+id/tabLayout">
+
+    <TableRow>
+
+        <com.chwings.letgotips.view.LineEditText
+            android:id="@+id/et_brand"
+            style="@style/et_left_editor_notes_info_dialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_divider_list_checkbox_checked"
+            android:hint="品牌" />
+
+        <com.chwings.letgotips.view.LineEditText
+            android:id="@+id/et_brandName"
+            style="@style/et_right_editor_notes_info_dialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_divider_list_checkbox_checked"
+            android:hint="产品名称" />
+    </TableRow>
+
+    <TableRow android:layout_marginTop="10dp">
+
+        <com.chwings.letgotips.view.LineEditText
+            android:id="@+id/et_currency"
+            style="@style/et_left_editor_notes_info_dialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_divider_list_checkbox_checked"
+            android:hint="币种" />
+
+        <com.chwings.letgotips.view.LineEditText
+            android:id="@+id/et_howMuch"
+            style="@style/et_right_editor_notes_info_dialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_divider_list_checkbox_checked"
+            android:hint="多少钱" />
+    </TableRow>
+
+    <TableRow android:layout_marginTop="10dp">
+
+        <com.chwings.letgotips.view.LineEditText
+            android:id="@+id/et_city"
+            style="@style/et_left_editor_notes_info_dialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_divider_list_checkbox_checked"
+            android:hint="城市" />
+
+        <com.chwings.letgotips.view.LineEditText
+            android:id="@+id/et_address"
+            style="@style/et_right_editor_notes_info_dialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_divider_list_checkbox_checked"
+            android:hint="购买地" />
+    </TableRow>
+
+    <TableRow android:layout_marginTop="15dp">
+
+        <Button
+            android:id="@+id/btn_finish"
+            style="@style/et_left_editor_notes_info_dialog"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_editor_notes_info_finish"
+            android:text="完成" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            style="@style/et_right_editor_notes_info_dialog"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_editor_notes_info_cancel"
+            android:text="取消"
+            android:textColor="#000000" />
+
+    </TableRow>
+
+
+</TableLayout>

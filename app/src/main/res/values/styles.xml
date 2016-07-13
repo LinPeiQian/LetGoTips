@@ -35,4 +35,22 @@
         <item name="android:paddingBottom">10dp</item>
     </style>
 
+    <style name="et_editor_notes_info_dialog">
+        <item name="android:textColorHint">#ffffff</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@null</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">middle</item>
+        <item name="android:padding">5dp</item>
+    </style>
+    
+    <style name="et_left_editor_notes_info_dialog" parent="et_editor_notes_info_dialog">
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
+
+    <style name="et_right_editor_notes_info_dialog" parent="et_editor_notes_info_dialog">
+        <item name="android:layout_marginLeft">5dp</item>
+    </style>
+
 </resources>

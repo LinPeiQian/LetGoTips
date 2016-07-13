@@ -11,7 +11,9 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -19,7 +21,6 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.brianLin.utils.DensityUtils;
 import com.chwings.letgotips.bean.LabelBean;
@@ -39,7 +40,7 @@ import java.util.Objects;
 /**
  * 标签控件
  */
-public class LabelView extends ViewGroup implements Serializable {
+public class LabelView extends ViewGroup implements Serializable, GestureDetector.OnGestureListener, View.OnTouchListener {
 
     /**
      * 只有一条线的样式变化
@@ -287,7 +288,9 @@ public class LabelView extends ViewGroup implements Serializable {
 
     private long mCenterAnimDuration = 700L;
 
-    private ImageView iv_anim ;
+    private ImageView iv_anim;
+
+    private GestureDetector mGestureDetector;
 
     private final String TAG = getClass().getSimpleName();
 
@@ -308,6 +311,8 @@ public class LabelView extends ViewGroup implements Serializable {
         mPaint.setAntiAlias(true);
         initStyleMap();
         initDot();
+        mGestureDetector = new GestureDetector(getContext(), this);
+        setOnTouchListener(this);
     }
 
     private void initDot() {
@@ -387,7 +392,7 @@ public class LabelView extends ViewGroup implements Serializable {
         mCurrentLineNum = lineNum;
     }
 
-    public List<LabelBean> getDatas(){
+    public List<LabelBean> getDatas() {
         return mDataList;
     }
 
@@ -1025,7 +1030,7 @@ public class LabelView extends ViewGroup implements Serializable {
         float setX = ViewCompat.getX(this) + x - centerXinParent;
         float setY = ViewCompat.getY(this) + y - centerYinParent;
         float x2 = 0;
-        x2 = mIsAdd ? setX : setX + getWidth() ;
+        x2 = mIsAdd ? setX : setX + getWidth();
         if (setX <= 0 || x2 >= mParentView.getWidth()) {
             setX = oldX;
         } else {
@@ -1033,7 +1038,7 @@ public class LabelView extends ViewGroup implements Serializable {
             mPointAtPx.x = x;
         }
         float y2 = 0;
-        y2 = mIsAdd ? setY : setY + getHeight() ;
+        y2 = mIsAdd ? setY : setY + getHeight();
         if (setY <= 0 || y2 >= mParentView.getHeight()) {
             setY = oldY;
         } else {
@@ -1043,8 +1048,8 @@ public class LabelView extends ViewGroup implements Serializable {
 
 //        setX(setX);
 //        setY(setY);
-        ViewCompat.setX(this , setX);
-        ViewCompat.setY(this , setY);
+        ViewCompat.setX(this, setX);
+        ViewCompat.setY(this, setY);
     }
 
     /**
@@ -1064,6 +1069,42 @@ public class LabelView extends ViewGroup implements Serializable {
                 mPointAtPx.y = pxY / ph;
             }
         }
+    }
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+        if (mOnLabelViewClickListener != null) {
+            mOnLabelViewClickListener.onLabelViewLongClick((RelativeLayout) getParent(), this, mDataList);
+        }
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        return false;
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return mGestureDetector.onTouchEvent(event);
     }
 
     class PointAtPercentRunnable implements Runnable {
@@ -1093,7 +1134,7 @@ public class LabelView extends ViewGroup implements Serializable {
                     pxX = p.getWidth() * parentX;
                     pxY = p.getHeight() * parentY;
                 }
-                mIsAdd = true ;
+                mIsAdd = true;
                 setPointAt(pxX, pxY);
             }
         }
@@ -1153,6 +1194,7 @@ public class LabelView extends ViewGroup implements Serializable {
     private int lastX;
     private int lastY;
 
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (mIsShow) {
@@ -1183,7 +1225,10 @@ public class LabelView extends ViewGroup implements Serializable {
                 } else if (mTextInfoList != null) {
                     for (TextInfo info : mTextInfoList) {
                         if (info.rectF != null && info.rectF.contains(lastX, lastY)) {
-                            Toast.makeText(getContext(), "" + info.content + " tag = " + info.tag, Toast.LENGTH_SHORT).show();
+                            if (mOnLabelViewClickListener != null) {
+                                mOnLabelViewClickListener.onLabelViewTagClick(info.content, info.tag, mDataList);
+                            }
+//                            Toast.makeText(getContext(), "" + info.content + " tag = " + info.tag, Toast.LENGTH_SHORT).show();
                             break;
                         }
                     }
@@ -1195,12 +1240,14 @@ public class LabelView extends ViewGroup implements Serializable {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int dotLeft = mCenterPoint.x - mInsideCircleRadius;
-        int dotTop = mCenterPoint.y - mInsideCircleRadius;
-        int dotRight = dotLeft + 2 * mInsideCircleRadius;
-        int dotBottom = dotTop + 2 * mInsideCircleRadius;
-        iv_anim.layout(dotLeft, dotTop, dotRight, dotBottom);
-        startCenterScaleAnim();
+        if (mCenterPoint != null) {
+            int dotLeft = mCenterPoint.x - mInsideCircleRadius;
+            int dotTop = mCenterPoint.y - mInsideCircleRadius;
+            int dotRight = dotLeft + 2 * mInsideCircleRadius;
+            int dotBottom = dotTop + 2 * mInsideCircleRadius;
+            iv_anim.layout(dotLeft, dotTop, dotRight, dotBottom);
+            startCenterScaleAnim();
+        }
     }
 
     /**
@@ -1312,13 +1359,13 @@ public class LabelView extends ViewGroup implements Serializable {
         }
     }
 
-    public List<LabelBean> getDataForList(){
+    public List<LabelBean> getDataForList() {
         return mDataList;
     }
 
-    public LabelBean[] getDataForArr(){
-        if(mDataList != null && mDataList.size() > 0){
-            return (LabelBean[])mDataList.toArray(new LabelBean[mDataList.size()]);
+    public LabelBean[] getDataForArr() {
+        if (mDataList != null && mDataList.size() > 0) {
+            return (LabelBean[]) mDataList.toArray(new LabelBean[mDataList.size()]);
         }
         return null;
     }
@@ -1354,4 +1401,17 @@ public class LabelView extends ViewGroup implements Serializable {
         LabelEnum tag;
         RectF rectF;
     }
+
+    private OnLabelViewClickListener mOnLabelViewClickListener;
+
+    public interface OnLabelViewClickListener {
+        public void onLabelViewLongClick(RelativeLayout parant, LabelView view, List<LabelBean> labelBeenList);
+
+        public void onLabelViewTagClick(String content, LabelEnum labelEnum, List<LabelBean> labelBeenList);
+    }
+
+    public void setOnLabelViewLongClick(OnLabelViewClickListener l) {
+        mOnLabelViewClickListener = l;
+    }
+
 }
