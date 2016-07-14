@@ -35,8 +35,12 @@
         <activity android:name=".activity.release.EditorImageActivity" />
         <activity android:name=".activity.release.ReleaseNotesActivity" />
         <activity android:name=".activity.release.SelectedImgActivity" />
-        <activity android:name=".activity.guide.CommentActivity"></activity>
-        <activity android:name=".activity.guide.QuestionActivity"></activity>
+        <activity android:name=".activity.guide.CommentActivity" />
+        <activity android:name=".activity.guide.QuestionActivity" />
+        <activity android:name=".activity.found.ProjectActivity" />
+        <activity android:name=".activity.found.LatestNotesActivity" />
+        <activity android:name=".activity.found.FoundQuestionActivity" />
+        <activity android:name=".activity.found.HotQuestionActivity"></activity>
     </application>
 
 </manifest>

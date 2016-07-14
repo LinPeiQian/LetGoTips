@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.chwings.letgotips.activity.found.HotQuestionActivity">
+
+    <com.brianLin.view.TitleBarView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        app:centerText="热门问题"
+        app:leftImage="@drawable/ic_divider_list_checkbox_checked"
+        app:leftBackPressed="true"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>

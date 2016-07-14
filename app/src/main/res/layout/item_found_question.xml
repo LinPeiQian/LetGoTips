@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[攻略]"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="都需要准备什么东西"
+        android:layout_toRightOf="@id/tv_type"
+        android:layout_marginLeft="5dp"
+        android:layout_alignBaseline="@id/tv_type"/>
+
+    <TextView
+        android:id="@+id/tv_question_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_type"
+        android:text="1000个问题"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_question_num"
+        android:layout_alignBaseline="@+id/tv_question_num"
+        android:text="2000人参与"
+        android:layout_marginLeft="15dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_divider_list_checkbox_checked"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+
+
+</RelativeLayout>
