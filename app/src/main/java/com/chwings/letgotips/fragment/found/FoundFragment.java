@@ -10,13 +10,16 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.chwings.letgotips.R;
-import com.chwings.letgotips.activity.found.FoundQuestionActivity;
+import com.chwings.letgotips.activity.found.AddressDetailedActivity;
+import com.chwings.letgotips.activity.found.FoundMoreQuestionActivity;
+import com.chwings.letgotips.activity.found.HotTopicMainActivity;
 import com.chwings.letgotips.activity.found.HotQuestionActivity;
 import com.chwings.letgotips.activity.found.LatestNotesActivity;
 import com.chwings.letgotips.activity.found.ProjectActivity;
@@ -29,6 +32,7 @@ import com.chwings.letgotips.view.FullyGridLayoutManager;
 import com.chwings.letgotips.view.FullyLinearLayoutManager;
 import com.zhy.base.adapter.ViewHolder;
 import com.zhy.base.adapter.recyclerview.CommonAdapter;
+import com.zhy.base.adapter.recyclerview.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +73,7 @@ public class FoundFragment extends BaseFragment implements View.OnClickListener{
         initBanner();
         initQuestionRecyclerView(rv_question);
         initProjectRecyclerView();
-        initQuestionRecyclerView(rv_address);
+        iniAddressRecyclerView(rv_address);
         initTalentRecyclerView();
     }
 
@@ -164,9 +168,49 @@ public class FoundFragment extends BaseFragment implements View.OnClickListener{
         rv_talent.addItemDecoration(new GridItemDecoration(3 , getResources().getDimensionPixelSize(R.dimen.padding ) , 0 , 0 , 0));
         rv_talent.setAdapter(adapter);
     }
+    private void iniAddressRecyclerView(RecyclerView view){
+        view.setLayoutManager(new FullyLinearLayoutManager(getActivity() , LinearLayout.HORIZONTAL , false));
+        List<Integer> questionData = new ArrayList<>();
+        questionData.add(R.drawable.i44444444);
+        questionData.add(R.drawable.i33333333333);
+        questionData.add(R.drawable.i22222222222);
+        questionData.add(R.drawable.i11111111);
+        questionData.add(R.drawable.i22222222222);
+        questionData.add(R.drawable.i44444444);
+        CommonAdapter<Integer> adapter = new CommonAdapter<Integer>(getActivity() , R.layout.item_question_found_home , questionData) {
+            @Override
+            public void convert(ViewHolder holder, Integer integer, int position) {
+                final ImageView imageView = (ImageView)holder.getView(R.id.imageView);
+                Glide.with(FoundFragment.this.getActivity()).load(integer).asBitmap().centerCrop().into(new BitmapImageViewTarget(imageView) {
+                    @Override
+                    protected void setResource(Bitmap resource) {
+                        RoundedBitmapDrawable circularBitmapDrawable =
+                                RoundedBitmapDrawableFactory.create(FoundFragment.this.getActivity().getResources(), resource);
+                        circularBitmapDrawable.setCornerRadius(getResources().getDimensionPixelSize(R.dimen.img_radius));
+                        imageView.setImageDrawable(circularBitmapDrawable);
+                    }
+                });
+            }
+        };
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(ViewGroup parent, View view, Object o, int position) {
+                Intent intent = new Intent(getActivity() , AddressDetailedActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public boolean onItemLongClick(ViewGroup parent, View view, Object o, int position) {
+                return false;
+            }
+        });
+        view.addItemDecoration(new SpaceItemDecoration(getResources().getDimensionPixelSize(R.dimen.padding) , 0 , 0 , 0 , false));
+        view.setAdapter(adapter);
+    }
+
 
     @OnClick({R.id.tv_more_project , R.id.tv_latest_notes , R.id.tv_more_question
-    ,R.id.ll_hot_question})
+                ,R.id.ll_hot_question , R.id.ll_hot_person})
     @Override
     public void onClick(View v) {
         Intent intent = null;
@@ -178,12 +222,17 @@ public class FoundFragment extends BaseFragment implements View.OnClickListener{
                 intent = new Intent(getActivity() , LatestNotesActivity.class);
                 break;
             case R.id.tv_more_question:
-                intent = new Intent(getActivity() , FoundQuestionActivity.class);
+                intent = new Intent(getActivity() , FoundMoreQuestionActivity.class);
                 break;
             case R.id.ll_hot_question:
                 intent = new Intent(getActivity() , HotQuestionActivity.class);
                 break;
+            case R.id.ll_hot_person:
+                intent = new Intent(getActivity() , HotTopicMainActivity.class);
+                break;
         }
-        startActivity(intent);
+        if(intent != null){
+            startActivity(intent);
+        }
     }
 }

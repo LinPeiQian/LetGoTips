@@ -13,11 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".testCase.TestZhuJieActivity" />
         <activity android:name=".activity.BaseActivity" />
@@ -39,8 +35,18 @@
         <activity android:name=".activity.guide.QuestionActivity" />
         <activity android:name=".activity.found.ProjectActivity" />
         <activity android:name=".activity.found.LatestNotesActivity" />
-        <activity android:name=".activity.found.FoundQuestionActivity" />
-        <activity android:name=".activity.found.HotQuestionActivity"></activity>
+        <activity android:name=".activity.found.FoundMoreQuestionActivity" />
+        <activity android:name=".activity.found.HotQuestionActivity" />
+        <activity android:name=".activity.found.HotTopicMainActivity" />
+        <activity android:name=".activity.found.FoundQuestionListActivity" />
+        <activity android:name=".activity.found.AddressDetailedActivity" />
+        <activity android:name=".testCase.TestPullRefresh">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

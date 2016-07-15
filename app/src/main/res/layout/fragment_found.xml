@@ -11,7 +11,9 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="@dimen/title_leftRight_padding"
-        android:paddingRight="@dimen/title_leftRight_padding">
+        android:paddingRight="@dimen/title_leftRight_padding"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <EditText
             android:layout_width="0dp"

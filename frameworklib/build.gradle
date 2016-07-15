@@ -32,4 +32,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     compile project(':okhttputils')
     compile project(':base-adapter-library')
+    compile project(':swipetoploadlayout')
 }
