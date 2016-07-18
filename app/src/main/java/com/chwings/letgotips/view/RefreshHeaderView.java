@@ -6,63 +6,62 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.aspsine.swipetoloadlayout.SwipeRefreshTrigger;
-import com.aspsine.swipetoloadlayout.SwipeTrigger;
 import com.chwings.letgotips.R;
+import com.chwings.letgotips.pull.RefreshTrigger;
 
 /**
  * Created by Jensen on 2016/7/15.
  */
-public class RefreshHeaderView extends RelativeLayout implements SwipeTrigger, SwipeRefreshTrigger {
+public class RefreshHeaderView extends RelativeLayout implements RefreshTrigger {
 
-    private ImageView iv_refresh;
+    private ImageView iv_anim ;
 
     private AnimationDrawable mAnimDrawable;
 
-    private int mTriggerOffset;
+    private int mHeight;
 
     public RefreshHeaderView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public RefreshHeaderView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public RefreshHeaderView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mTriggerOffset = context.getResources().getDimensionPixelOffset(R.dimen.refresh_header_height);
+
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        iv_refresh = (ImageView) findViewById(R.id.iv_refresh);
-        mAnimDrawable = (AnimationDrawable) iv_refresh.getBackground();
+        iv_anim = (ImageView)findViewById(R.id.iv_anim);
+        mAnimDrawable = (AnimationDrawable)iv_anim.getBackground();
+    }
+
+    @Override
+    public void onStart(boolean automatic, int headerHeight, int finalHeight) {
+        this.mHeight = headerHeight;
+    }
+
+    @Override
+    public void onMove(boolean isComplete, boolean automatic, int moved) {
+        if (!isComplete) {
+            iv_anim.setVisibility(VISIBLE);
+            if(!mAnimDrawable.isRunning()){
+                mAnimDrawable.start();
+            }
+        }
     }
 
     @Override
     public void onRefresh() {
-        if (!mAnimDrawable.isRunning()){
-            mAnimDrawable.start();
-        }
-    }
-
-    @Override
-    public void onPrepare() {
-//        ivSpeed.clearAnimation();
-//        ivSpeed.setVisibility(GONE);
-    }
-
-    @Override
-    public void onMove(int y, boolean isComplete, boolean automatic) {
     }
 
     @Override
     public void onRelease() {
-        if (!mAnimDrawable.isRunning()){
-            mAnimDrawable.start();
-        }
+
     }
 
     @Override
@@ -71,9 +70,5 @@ public class RefreshHeaderView extends RelativeLayout implements SwipeTrigger, S
 
     @Override
     public void onReset() {
-        mAnimDrawable.stop();
-//        ivSpeed.clearAnimation();
-//        ivSpeed.setVisibility(GONE);
     }
-
 }

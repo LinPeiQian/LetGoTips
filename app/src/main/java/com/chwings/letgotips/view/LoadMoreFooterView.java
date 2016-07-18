@@ -2,83 +2,108 @@ package com.chwings.letgotips.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
-import com.aspsine.swipetoloadlayout.SwipeLoadMoreFooterLayout;
 import com.chwings.letgotips.R;
 
 /**
  * Created by Jensen on 2016/7/15.
  */
-public class LoadMoreFooterView extends SwipeLoadMoreFooterLayout {
+public class LoadMoreFooterView extends FrameLayout {
 
-    private TextView tvLoadMore;
-    private ImageView ivSuccess;
-    private ProgressBar progressBar;
+    private ProgressBar mProgressBar ;
 
-    private int mFooterHeight;
+    private Status mStatus;
+
+//    private View mLoadingView;
+//
+//    private View mErrorView;
+//
+//    private View mTheEndView;
+
+//    private OnRetryListener mOnRetryListener;
 
     public LoadMoreFooterView(Context context) {
         this(context, null);
+//        super(context);
+//        setStatus(Status.GONE);
     }
 
     public LoadMoreFooterView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
+//        super(context , attrs);
+//        setStatus(Status.GONE);
     }
 
     public LoadMoreFooterView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mFooterHeight = getResources().getDimensionPixelOffset(R.dimen.load_foot_height);
+
+//        mLoadingView = findViewById(R.id.loadingView);
+//        mErrorView = findViewById(R.id.errorView);
+//        mTheEndView = findViewById(R.id.theEndView);
+//
+//        mErrorView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mOnRetryListener != null) {
+//                    mOnRetryListener.onRetry(LoadMoreFooterView.this);
+//                }
+//            }
+//        });
+
+        setStatus(Status.GONE);
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        tvLoadMore = (TextView) findViewById(R.id.tvLoadMore);
-        ivSuccess = (ImageView) findViewById(R.id.ivSuccess);
-        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        mProgressBar = (ProgressBar)findViewById(R.id.progressBar);
     }
 
-    @Override
-    public void onPrepare() {
-        ivSuccess.setVisibility(GONE);
+//    public void setOnRetryListener(OnRetryListener listener) {
+//        this.mOnRetryListener = listener;
+//    }
+
+    public Status getStatus() {
+        return mStatus;
     }
 
-    @Override
-    public void onMove(int y, boolean isComplete, boolean automatic) {
-        if (!isComplete) {
-            ivSuccess.setVisibility(GONE);
-            progressBar.setVisibility(GONE);
-            if (-y >= mFooterHeight) {
-                tvLoadMore.setText("RELEASE TO LOAD MORE");
-            } else {
-                tvLoadMore.setText("SWIPE TO LOAD MORE");
-            }
+    public void setStatus(Status status) {
+        this.mStatus = status;
+        change();
+    }
+
+//    public boolean canLoadMore() {
+//        return mStatus == Status.GONE || mStatus == Status.ERROR;
+//    }
+
+    private void change() {
+        switch (mStatus) {
+            case GONE:
+                mProgressBar.setVisibility(GONE);
+                break;
+
+            case LOADING:
+                mProgressBar.setVisibility(VISIBLE);
+                break;
+
+            case ERROR:
+                mProgressBar.setVisibility(GONE);
+                break;
+
+            case THE_END:
+                mProgressBar.setVisibility(GONE);
+                break;
         }
     }
 
-    @Override
-    public void onLoadMore() {
-        tvLoadMore.setText("LOADING MORE");
-        progressBar.setVisibility(VISIBLE);
+    public enum Status {
+        GONE, LOADING, ERROR, THE_END
     }
 
-    @Override
-    public void onRelease() {
-
-    }
-
-    @Override
-    public void onComplete() {
-        progressBar.setVisibility(GONE);
-        ivSuccess.setVisibility(VISIBLE);
-    }
-
-    @Override
-    public void onReset() {
-        ivSuccess.setVisibility(GONE);
-    }
+//    public interface OnRetryListener {
+//        void onRetry(LoadMoreFooterView view);
+//    }
 
 }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.chwings.letgotips.pull.IRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iRecyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.chwings.letgotips.testCase.TestPullRefresh">
+    app:loadMoreEnabled="true"
+    app:refreshEnabled="true"
+    tools:context=".testCase.TestPullRefresh"
+    >
 
-    <include
-        layout="@layout/layout_pull_refresh_load"></include>
-
-</LinearLayout>
+</com.chwings.letgotips.pull.IRecyclerView>

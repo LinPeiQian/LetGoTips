@@ -13,7 +13,6 @@
             <option value="$PROJECT_DIR$/frameworklib" />
             <option value="$PROJECT_DIR$/okhttputils" />
             <option value="$PROJECT_DIR$/photoview" />
-            <option value="$PROJECT_DIR$/swipetoploadlayout" />
           </set>
         </option>
         <option name="myModules">
@@ -24,7 +23,6 @@
             <option value="$PROJECT_DIR$/frameworklib" />
             <option value="$PROJECT_DIR$/okhttputils" />
             <option value="$PROJECT_DIR$/photoview" />
-            <option value="$PROJECT_DIR$/swipetoploadlayout" />
           </set>
         </option>
       </GradleProjectSettings>

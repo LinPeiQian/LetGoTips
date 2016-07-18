@@ -20,4 +20,5 @@
         <attr name="rightTextSize" format="dimension"></attr>
     </declare-styleable>
 
+
 </resources>

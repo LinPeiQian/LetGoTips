@@ -1,1 +1,1 @@
-include ':app', ':frameworklib', "okhttputils", ':base-adapter-library', ':photoview', ':swipetoploadlayout'
+include ':app', ':frameworklib', "okhttputils", ':base-adapter-library', ':photoview'
