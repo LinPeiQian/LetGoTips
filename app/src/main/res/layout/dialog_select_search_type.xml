@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="130dp"
+        android:layout_height="170dp"
+        android:background="@drawable/bg_dialog_search_type"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_notes"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_map_return"
+                android:gravity="center_vertical"
+                android:text="笔记" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_user"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_map_return"
+                android:gravity="center_vertical"
+                android:text="用户" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_question"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_map_return"
+                android:gravity="center_vertical"
+                android:text="问题" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_project"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_map_return"
+                android:gravity="center_vertical"
+                android:text="专题" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

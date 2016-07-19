@@ -15,13 +15,13 @@
         android:focusable="true"
         android:focusableInTouchMode="true">
 
-        <EditText
+        <TextView
+            android:id="@+id/tv_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/title_leftRight_padding"
             android:layout_weight="1"
-            android:background="@drawable/bg_edittext_found_home_search"
-            android:hint="搜索笔记、专题、游记"
+            android:text="搜索笔记、专题、游记"
             android:padding="5dp"
             android:paddingBottom="5dp"
             android:paddingLeft="15dp"
@@ -223,6 +223,7 @@
                     android:text="达人" />
 
                 <TextView
+                    android:id="@+id/tv_more_talent_rank"
                     style="@style/found_home_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

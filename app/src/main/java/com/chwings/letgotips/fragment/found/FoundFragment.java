@@ -23,6 +23,8 @@ import com.chwings.letgotips.activity.found.HotTopicMainActivity;
 import com.chwings.letgotips.activity.found.HotQuestionActivity;
 import com.chwings.letgotips.activity.found.LatestNotesActivity;
 import com.chwings.letgotips.activity.found.ProjectActivity;
+import com.chwings.letgotips.activity.found.SearchActivity;
+import com.chwings.letgotips.activity.found.TalentRankActivity;
 import com.chwings.letgotips.adapter.guide.found.FoundHomeViewPagerAdapter;
 import com.chwings.letgotips.fragment.BaseFragment;
 import com.chwings.letgotips.itemDecoration.GridItemDecoration;
@@ -210,7 +212,8 @@ public class FoundFragment extends BaseFragment implements View.OnClickListener{
 
 
     @OnClick({R.id.tv_more_project , R.id.tv_latest_notes , R.id.tv_more_question
-                ,R.id.ll_hot_question , R.id.ll_hot_person})
+                ,R.id.ll_hot_question , R.id.ll_hot_person , R.id.tv_more_talent_rank
+                  , R.id.tv_search})
     @Override
     public void onClick(View v) {
         Intent intent = null;
@@ -229,6 +232,12 @@ public class FoundFragment extends BaseFragment implements View.OnClickListener{
                 break;
             case R.id.ll_hot_person:
                 intent = new Intent(getActivity() , HotTopicMainActivity.class);
+                break;
+            case R.id.tv_more_talent_rank:
+                intent = new Intent(getActivity() , TalentRankActivity.class);
+                break;
+            case R.id.tv_search:
+                intent = new Intent(getActivity() , SearchActivity.class);
                 break;
         }
         if(intent != null){

@@ -10,6 +10,7 @@ import com.chwings.letgotips.activity.BaseActivity;
 import com.chwings.letgotips.pull.IRecyclerView;
 import com.chwings.letgotips.pull.OnLoadMoreListener;
 import com.chwings.letgotips.pull.OnRefreshListener;
+import com.chwings.letgotips.view.LoadMoreFooterView;
 import com.zhy.base.adapter.ViewHolder;
 import com.zhy.base.adapter.recyclerview.CommonAdapter;
 
@@ -36,7 +37,6 @@ public class TestPullRefresh extends BaseActivity implements OnRefreshListener, 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         iRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         for(int i = 0 ; i < 40 ; i ++){
             mDatas.add("Hello " + i);
         }
@@ -59,24 +59,23 @@ public class TestPullRefresh extends BaseActivity implements OnRefreshListener, 
 
     @Override
     public void onLoadMore(final View loadMoreView) {
-        loadMoreView.setVisibility(View.VISIBLE);
-//        iRecyclerView.setLoadMoreing(true);
+        iRecyclerView.setLoadMoreStatus(LoadMoreFooterView.Status.LOADING);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                loadMoreView.setVisibility(View.GONE);
-//                iRecyclerView.setLoadMoreing(false);
+                iRecyclerView.setLoadMoreStatus(LoadMoreFooterView.Status.ERROR);
             }
-        } , 3000);
+        } , 2000);
     }
 
     @Override
     public void onRefresh() {
+        iRecyclerView.setLoadMoreStatus(LoadMoreFooterView.Status.GONE);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 iRecyclerView.setRefreshing(false);
             }
-        } , 3000);
+        } , 2000);
     }
 }

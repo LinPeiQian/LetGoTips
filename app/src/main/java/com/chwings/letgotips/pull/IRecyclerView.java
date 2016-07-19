@@ -21,6 +21,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.chwings.letgotips.R;
+import com.chwings.letgotips.view.LoadMoreFooterView;
 
 /**
  * Created by aspsine on 16/3/3.
@@ -133,7 +134,6 @@ public class IRecyclerView extends RecyclerView {
                 mOnLoadMoreScrollListener = new OnLoadMoreScrollListener() {
                     @Override
                     public void onLoadMore(RecyclerView recyclerView) {
-
                         if (mOnLoadMoreListener != null && mStatus == STATUS_DEFAULT) {
                             mOnLoadMoreListener.onLoadMore(mLoadMoreFooterView);
                         }
@@ -172,14 +172,10 @@ public class IRecyclerView extends RecyclerView {
         }
     }
 
-    public void setLoadMoreing(boolean loadMoreing){
+    public void setLoadMoreStatus(LoadMoreFooterView.Status status){
         if(mLoadMoreFooterView != null){
-            if(loadMoreing){
-                mLoadMoreFooterView.setVisibility(View.VISIBLE);
-            }else{
-                mLoadMoreFooterView.setVisibility(View.GONE);
-            }
-
+            LoadMoreFooterView footView = (LoadMoreFooterView)mLoadMoreFooterView;
+            footView.setStatus(status);
         }
     }
 

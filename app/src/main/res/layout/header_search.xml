@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/item_search_height"
+    android:padding="@dimen/item_search_padding"
+    android:background="@drawable/bg_search_divider_bottom"
+    android:id="@+id/rl_header"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="历史记录"
+        style="@style/tv_search_header"
+        />
+
+    <ImageView
+        android:id="@+id/iv_clear_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_map_return"
+        />
+
+</RelativeLayout>

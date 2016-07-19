@@ -24,5 +24,7 @@ public interface StorePathConstantsValues {
 	/** 发表的图片 */
 	public final static String RELEASE_PATH = STORE_PREFIX + "release";
 
+	public final static String DATA_PATH = STORE_PREFIX + "DATA";
+
 
 }

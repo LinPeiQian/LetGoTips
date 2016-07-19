@@ -49,6 +49,16 @@ public class SPUtil {
 	public String getCacheData(String tag){
 		return getSp().getString(tag, "");
 	}
+
+	/** 保存搜索记录 */
+	public void setSearchHistory(String history){
+		getEdit().putString("SearchHistory" , history).commit();
+	}
+
+	/** 获取搜索记录 */
+	public String getSearchHistory(){
+		return getSp().getString("SearchHistory" , "");
+	}
 	
 //	//每次请求带上的session id
 //	public void setToken(String id){

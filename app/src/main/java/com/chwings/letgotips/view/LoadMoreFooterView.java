@@ -1,9 +1,12 @@
 package com.chwings.letgotips.view;
 
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ProgressBar;
+import android.widget.ImageView;
 
 import com.chwings.letgotips.R;
 
@@ -12,54 +15,30 @@ import com.chwings.letgotips.R;
  */
 public class LoadMoreFooterView extends FrameLayout {
 
-    private ProgressBar mProgressBar ;
+    private ImageView iv_foot;
 
     private Status mStatus;
 
-//    private View mLoadingView;
-//
-//    private View mErrorView;
-//
-//    private View mTheEndView;
+    private AnimationDrawable mAnimationDrawable;
 
 //    private OnRetryListener mOnRetryListener;
 
     public LoadMoreFooterView(Context context) {
         this(context, null);
-//        super(context);
-//        setStatus(Status.GONE);
     }
 
     public LoadMoreFooterView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
-//        super(context , attrs);
-//        setStatus(Status.GONE);
     }
 
     public LoadMoreFooterView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
-//        mLoadingView = findViewById(R.id.loadingView);
-//        mErrorView = findViewById(R.id.errorView);
-//        mTheEndView = findViewById(R.id.theEndView);
-//
-//        mErrorView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (mOnRetryListener != null) {
-//                    mOnRetryListener.onRetry(LoadMoreFooterView.this);
-//                }
-//            }
-//        });
-
+        LayoutInflater.from(context).inflate(R.layout.layout_irecyclerview_load_more_footer_view, this, true);
+        iv_foot = (ImageView)findViewById(R.id.iv_foot);
+        mAnimationDrawable = (AnimationDrawable)iv_foot.getBackground();
         setStatus(Status.GONE);
     }
 
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        mProgressBar = (ProgressBar)findViewById(R.id.progressBar);
-    }
 
 //    public void setOnRetryListener(OnRetryListener listener) {
 //        this.mOnRetryListener = listener;
@@ -80,20 +59,19 @@ public class LoadMoreFooterView extends FrameLayout {
 
     private void change() {
         switch (mStatus) {
-            case GONE:
-                mProgressBar.setVisibility(GONE);
-                break;
-
             case LOADING:
-                mProgressBar.setVisibility(VISIBLE);
+                setVisibility(View.VISIBLE);
+                if(mAnimationDrawable != null){
+                    mAnimationDrawable.start();
+                }
                 break;
-
             case ERROR:
-                mProgressBar.setVisibility(GONE);
-                break;
-
+            case GONE:
             case THE_END:
-                mProgressBar.setVisibility(GONE);
+                setVisibility(View.GONE);
+                if(mAnimationDrawable != null){
+                    mAnimationDrawable.stop();
+                }
                 break;
         }
     }
