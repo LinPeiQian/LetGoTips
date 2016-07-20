@@ -44,11 +44,16 @@
         <activity android:name=".activity.found.HotTopicMainActivity" />
         <activity android:name=".activity.found.FoundQuestionListActivity" />
         <activity android:name=".activity.found.AddressDetailedActivity" />
-        <activity android:name=".testCase.TestPullRefresh" />
+        <activity android:name=".testCase.TestPullRefresh">
+
+        </activity>
         <activity android:name=".activity.found.TalentRankActivity" />
         <activity android:name=".activity.found.TalentDetailedActivity" />
         <activity android:name=".activity.found.RankActivity" />
-        <activity android:name=".activity.found.SearchActivity"></activity>
+        <activity android:name=".activity.found.SearchActivity" />
+        <activity android:name=".testCase.TestPrt">
+
+        </activity>
     </application>
 
 </manifest>

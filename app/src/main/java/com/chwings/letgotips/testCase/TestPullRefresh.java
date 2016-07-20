@@ -36,6 +36,7 @@ public class TestPullRefresh extends BaseActivity implements OnRefreshListener, 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         iRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         for(int i = 0 ; i < 40 ; i ++){
             mDatas.add("Hello " + i);
@@ -65,7 +66,7 @@ public class TestPullRefresh extends BaseActivity implements OnRefreshListener, 
             public void run() {
                 iRecyclerView.setLoadMoreStatus(LoadMoreFooterView.Status.ERROR);
             }
-        } , 2000);
+        } , 3000);
     }
 
     @Override

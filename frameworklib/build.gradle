@@ -33,4 +33,5 @@ dependencies {
     compile project(':okhttputils')
     compile project(':base-adapter-library')
     compile files('src/libs/nineoldandroids-2.4.0.jar')
+    compile project(':cptr')
 }

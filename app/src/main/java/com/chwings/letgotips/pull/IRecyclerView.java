@@ -118,6 +118,7 @@ public class IRecyclerView extends RecyclerView {
         super.onMeasure(widthSpec, heightSpec);
         if (mRefreshHeaderView != null) {
             if (mRefreshHeaderView.getMeasuredHeight() > mRefreshFinalMoveOffset) {
+
                 mRefreshFinalMoveOffset = 0;
             }
         }

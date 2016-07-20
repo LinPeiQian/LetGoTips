@@ -1,6 +1,7 @@
 package com.chwings.letgotips.pull;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -23,6 +24,7 @@ public abstract class OnLoadMoreScrollListener extends RecyclerView.OnScrollList
                 && canTriggerLoadMore(recyclerView);
 
         if (triggerCondition) {
+            Log.d("DEBUG" , "滑到最底部");
             onLoadMore(recyclerView);
         }
     }
